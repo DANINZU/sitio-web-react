@@ -11,6 +11,7 @@ RUN npm run build
 # Etapa 2: Producción
 # Utilizar Alpine y Nginx asegura una base ligera sin archivos innecesarios
 FROM nginx:alpine
+RUN apk upgrade --no-cache
 # Copiar únicamente los archivos estáticos de la carpeta 'dist' generada en la Etapa 1
 COPY --from=build /app/dist /usr/share/nginx/html
 EXPOSE 80
